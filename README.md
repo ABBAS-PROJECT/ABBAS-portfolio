@@ -118,22 +118,6 @@ Try these hidden features in the portfolio:
 - 🕹️ **404 Game** - Visit a non-existent page to play the runner game
 - 🤖 **MixBot** - Click the assistant for contextual help on each page
 
-## Deployment
-
-This portfolio is deployed on Netlify. To deploy your own version:
-
-1. Build the project:
-```bash
-   npm run build
-```
-
-2. Deploy to Netlify:
-   - Connect your GitHub repository
-   - Set build command: `npm run build`
-   - Set publish directory: `build`
-
-**Note:** The `public/_redirects` file is required for React Router to work correctly on Netlify.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
