@@ -1,0 +1,35 @@
+// ============================================
+// DARK THEME
+// ============================================
+// Sleek dark mode for night browsing
+// ============================================
+
+html.dark {
+  // Primary colors
+  --primary: #818CF8;
+  --primary-hover: #A5B4FC;
+  --primary-light: #C7D2FE;
+  
+  // Background colors
+  --bg-primary: #111827;
+  --bg-secondary: #1F2937;
+  --bg-tertiary: #374151;
+  
+  // Text colors
+  --text-primary: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-tertiary: #9CA3AF;
+  
+  // Border colors
+  --border: #374151;
+  --border-hover: #4B5563;
+  
+  // Shadows
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px -1px rgb(0 0 0 / 0.5);
+  --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  
+  // Success, warning, danger
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger: #F87171;
+}

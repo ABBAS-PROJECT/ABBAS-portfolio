@@ -1,0 +1,106 @@
+// ============================================
+// RETRO THEME
+// ============================================
+// 8-bit gaming aesthetic with scanlines
+// Matrix-style green on black
+// ============================================
+
+html.retro {
+  // Primary colors - Matrix green
+  --primary: #00FF00;
+  --primary-hover: #00CC00;
+  --primary-light: #33FF33;
+  
+  // Background colors - Black
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --bg-tertiary: #1A1A1A;
+  
+  // Text colors - Green
+  --text-primary: #00FF00;
+  --text-secondary: #00CC00;
+  --text-tertiary: #009900;
+  
+  // Border colors
+  --border: #00FF00;
+  --border-hover: #00CC00;
+  
+  // Shadows - Neon glow
+  --shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  --shadow-hover: 0 0 20px rgba(0, 255, 0, 0.5);
+  
+  // Success, warning, danger
+  --success: #00FF00;
+  --warning: #FFFF00;
+  --danger: #FF0000;
+  
+  // ============================================
+  // RETRO-SPECIFIC STYLES
+  // ============================================
+  
+  // Change all fonts to pixel font
+  * {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.75rem;
+  }
+  
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1rem !important; }
+  h4, h5, h6 { font-size: 0.875rem !important; }
+  
+  // Scanlines effect (CRT monitor)
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 0, 0.03),
+      rgba(0, 255, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+  
+  // Add text shadow glow
+  body {
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  }
+  
+  // Pixelated images
+  img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  
+  // Retro borders
+  .card,
+  button,
+  input,
+  textarea {
+    border: 2px solid var(--primary) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3) !important;
+  }
+  
+  // Blinking cursor effect for inputs
+  input:focus,
+  textarea:focus {
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 49% {
+      border-color: var(--primary);
+    }
+    50%, 100% {
+      border-color: transparent;
+    }
+  }
+}

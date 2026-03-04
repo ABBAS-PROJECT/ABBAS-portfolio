@@ -1,0 +1,57 @@
+.nokia-snake-container {
+  position: fixed;
+  bottom: 15%; 
+  left: 0;
+  z-index: 998;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+
+  .nokia-lcd {
+    background: #879b32; // Original Nokia 3310 green screen
+    padding: 10px 15px;
+    border: 3px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.15);
+
+    .snake-body {
+      display: flex;
+      flex-direction: row-reverse; // Moves head first
+      gap: 2px;
+
+      .segment {
+        width: 14px;
+        height: 14px;
+        background: #2b3307; // Dark green "pixel"
+        border: 1px solid #879b32; // Faint grid lines
+
+        &.head {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: flex-end;
+          padding-right: 2px;
+
+          .eye {
+            width: 3px;
+            height: 3px;
+            background: #879b32; // Inverted pixel for eye
+          }
+        }
+      }
+    }
+
+    .nokia-food {
+      width: 12px;
+      height: 12px;
+      background: #2b3307;
+      animation: nokia-blink 0.4s step-end infinite;
+    }
+  }
+}
+
+@keyframes nokia-blink {
+  50% { opacity: 0; }
+}

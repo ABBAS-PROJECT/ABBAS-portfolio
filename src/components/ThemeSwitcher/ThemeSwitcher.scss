@@ -1,0 +1,142 @@
+.theme-switcher {
+  position: fixed;
+  top: 1rem; // MOVED UP to align with navbar
+  right: 2rem;
+  z-index: 9999;
+  
+  @media (max-width: 768px) {
+    top: 0.75rem;
+    right: 1rem;
+  }
+  
+  .theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg-secondary); // FIXED: Use theme variable
+    color: var(--text-primary);
+    padding: 0.75rem 1.25rem;
+    border-radius: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    
+    &:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    svg {
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+    
+    .theme-label {
+      font-size: 0.875rem;
+      
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+  
+  .theme-dropdown {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    background: var(--bg-secondary); // FIXED: Use theme variable
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    min-width: 180px;
+    border: 2px solid var(--border-color); // FIXED: Use theme variable
+    
+    .theme-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      color: var(--text-primary); // FIXED: Use theme variable
+      transition: all 0.2s;
+      cursor: pointer;
+      position: relative;
+      border: none;
+      font-size: 0.875rem;
+      font-family: 'Fira Code', monospace;
+      
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--border-color); // FIXED: Use theme variable
+      }
+      
+      &:hover {
+        background: var(--bg-tertiary); // FIXED: Use theme variable
+        padding-left: 1.5rem;
+      }
+      
+      &.active {
+        background: var(--primary);
+        color: white; // Always white on active
+        border-left: 3px solid var(--primary);
+        
+        .theme-icon {
+          color: white; // Always white on active
+        }
+      }
+      
+      .theme-icon {
+        font-size: 1.25rem;
+        transition: transform 0.2s;
+        color: var(--primary);
+      }
+      
+      &:hover .theme-icon {
+        transform: scale(1.1);
+      }
+      
+      .theme-name {
+        font-size: 0.875rem;
+        font-weight: 500;
+        flex: 1;
+      }
+      
+      .checkmark {
+        font-size: 1rem;
+        font-weight: bold;
+        color: white; // Always white on active
+      }
+    }
+  }
+}
+
+// ADDED: Specific styling for light theme
+:root.light,
+.light {
+  .theme-switcher {
+    .theme-dropdown {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); // Lighter shadow for light mode
+    }
+  }
+}
+
+// ADDED: Specific styling for retro theme
+:root.retro,
+.retro {
+  .theme-switcher {
+    .theme-toggle-btn {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+    }
+    
+    .theme-dropdown {
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    }
+  }
+}

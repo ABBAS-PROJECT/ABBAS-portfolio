@@ -1,0 +1,129 @@
+// ============================================
+// PACMAN-TRANSITION.SCSS
+// ============================================
+
+@import url('https://fonts.googleapis.com');
+
+.pacman-transition {
+  position: fixed;
+  inset: 0;
+  background: #020205;
+  /* UPDATED: Higher than Navbar (9997) to stay on top of all elements */
+  z-index: 10001; 
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  // --- CRT SCANLINE EFFECT ---
+  .crt-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 3px, 2px 100%;
+    z-index: 5;
+  }
+
+  .content-wrapper {
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .header-text {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+
+  .maze-row {
+    position: relative;
+    height: 80px;
+    /* UPDATED: Using your theme variable for professional 90% / gaming 10% balance */
+    border-top: 4px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
+    display: flex;
+    align-items: center;
+  }
+
+  .actors-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: absolute;
+  }
+
+  // --- PAC-MAN ---
+  .pacman {
+    width: 50px;
+    height: 50px;
+    background: #ffff00;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 15px #ffff00;
+
+    .mouth-top, .mouth-bottom {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #020205; 
+      clip-path: polygon(50% 50%, 100% 0, 100% 50%);
+    }
+
+    .mouth-top { animation: chomp-top 0.15s infinite; }
+    .mouth-bottom { 
+      clip-path: polygon(50% 50%, 100% 50%, 100% 100%);
+      animation: chomp-bottom 0.15s infinite; 
+    }
+  }
+
+  // --- GHOST ---
+  .ghost {
+    width: 45px;
+    height: 45px;
+    background: #00ffff;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    box-shadow: 0 0 10px #00ffff;
+    &::after { 
+      content: 'oo'; 
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #fff;
+      font-size: 15px;
+    }
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: #ffb8ae;
+    margin: 0 30px;
+    border-radius: 1px;
+  }
+
+  .footer-text {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    font-size: 0.6rem;
+    /* UPDATED: Matches your theme color */
+    color: var(--primary); 
+  }
+}
+
+// --- ANIMATIONS ---
+@keyframes chomp-top {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-40deg); }
+}
+@keyframes chomp-bottom {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(40deg); }
+}

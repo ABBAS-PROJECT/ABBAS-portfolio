@@ -1,0 +1,121 @@
+// ============================================
+// SKILLS.SCSS - SKILLS PAGE STYLES
+// ============================================
+
+.skills {
+  min-height: 100vh;
+  padding: 4rem 0;
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  .skills-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    font-size: 1.125rem;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+    
+    .skill-category {
+      background: var(--bg-secondary);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+      
+      .category-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        
+        .category-icon {
+          font-size: 2rem;
+        }
+        
+        h2 {
+          font-size: 1.5rem;
+          color: var(--text-primary);
+        }
+      }
+      
+      .skills-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        
+        .skill-item {
+          .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            
+            .skill-name {
+              color: var(--text-primary);
+              font-weight: 500;
+            }
+            
+            .skill-level {
+              color: var(--primary);
+              font-weight: 600;
+              font-family: 'Fira Code', monospace;
+            }
+          }
+          
+          .skill-bar {
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+            
+            .skill-progress {
+              height: 100%;
+              background: linear-gradient(90deg, var(--primary), var(--primary-light));
+              border-radius: 4px;
+              transition: width 1s ease;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .skills-note {
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--primary);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    
+    p {
+      color: var(--text-secondary);
+      margin: 0;
+      
+      strong {
+        color: var(--primary);
+      }
+    }
+  }
+}

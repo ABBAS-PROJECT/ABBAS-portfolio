@@ -1,0 +1,35 @@
+// ============================================
+// LIGHT THEME
+// ============================================
+// Default theme - professional and clean
+// ============================================
+
+html.light {
+  // Primary colors
+  --primary: #6366F1;
+  --primary-hover: #4F46E5;
+  --primary-light: #818CF8;
+  
+  // Background colors
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9FAFB;
+  --bg-tertiary: #F3F4F6;
+  
+  // Text colors
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+  
+  // Border colors
+  --border: #E5E7EB;
+  --border-hover: #D1D5DB;
+  
+  // Shadows
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  // Success, warning, danger
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+}
