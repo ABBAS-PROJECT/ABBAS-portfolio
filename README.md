@@ -142,16 +142,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## Contact
-
-**Mohammed Abbas**  
-Software Engineer  
-
-📧 Email: mkabbas2014@gmail.com  
-💼 LinkedIn: [linkedin.com/in/mohmmad-abbas](https://www.linkedin.com/in/mohmmad-abbas/)  
-🐙 GitHub: [github.com/ABBAS-PROJECT](https://github.com/ABBAS-PROJECT)  
-📍 Location: Riyadh, Saudi Arabia
-
----
-
 Thank you for checking out my portfolio! If you have any questions, feedback, or opportunities, feel free to reach out. ⭐
