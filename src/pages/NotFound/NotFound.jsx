@@ -35,7 +35,6 @@ function NotFound() {
 
   // Start game
   const startGame = () => {
-    console.log('Game started!'); // DEBUG
     setGameStarted(true);
     setGameOver(false);
     setScore(0);
@@ -45,7 +44,6 @@ function NotFound() {
 
   // Reset game
   const resetGame = () => {
-    console.log('Game over! Score:', score); // DEBUG
     setGameOver(true);
     setGameStarted(false);
     setObstacles([]);
@@ -55,7 +53,7 @@ function NotFound() {
     }
   };
 
-  // Game loop - COMPLETELY REWRITTEN
+  // Game loop
   useEffect(() => {
     if (!gameStarted || gameOver) {
       if (gameLoopRef.current) {
@@ -69,40 +67,29 @@ function NotFound() {
       return;
     }
 
-    console.log('Starting game loops...'); // DEBUG
-
     // Spawn obstacles every 2 seconds
     obstacleTimerRef.current = setInterval(() => {
       const newObstacle = {
         id: Date.now(),
-        x: 100 // Start at right edge
+        x: 100
       };
-      console.log('Spawning obstacle:', newObstacle); // DEBUG
-      setObstacles(prev => {
-        const updated = [...prev, newObstacle];
-        console.log('Total obstacles:', updated.length); // DEBUG
-        return updated;
-      });
+      setObstacles(prev => [...prev, newObstacle]);
     }, 2000);
 
-    // Main game loop - runs every 30ms
+    // Main game loop
     gameLoopRef.current = setInterval(() => {
-      // Increase score
       setScore(prev => prev + 1);
       
-      // Move obstacles and check collision
       setObstacles(prev => {
         const updated = prev
           .map(obs => ({
             ...obs,
-            x: obs.x - 1.5 // Move left
+            x: obs.x - 1.5
           }))
-          .filter(obs => obs.x > -10); // Remove off-screen obstacles
+          .filter(obs => obs.x > -10);
         
         // Check collision
         updated.forEach(obs => {
-          // Player is at 10% from left, 40px wide
-          // Obstacle is ~35px wide
           const playerLeft = 10;
           const playerRight = 14;
           const obstacleLeft = obs.x;
@@ -115,7 +102,6 @@ function NotFound() {
           const verticalCollision = playerY < 50;
           
           if (horizontalCollision && verticalCollision) {
-            console.log('COLLISION!'); // DEBUG
             resetGame();
           }
         });
@@ -124,12 +110,11 @@ function NotFound() {
       });
     }, 30);
 
-    // Cleanup
     return () => {
-      console.log('Cleaning up game loops...'); // DEBUG
       if (gameLoopRef.current) clearInterval(gameLoopRef.current);
       if (obstacleTimerRef.current) clearInterval(obstacleTimerRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameStarted, gameOver, playerY]);
 
   // Keyboard controls
@@ -146,14 +131,8 @@ function NotFound() {
     };
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameStarted]);
-
-  // DEBUG: Log obstacles
-  useEffect(() => {
-    if (obstacles.length > 0) {
-      console.log('Current obstacles:', obstacles);
-    }
-  }, [obstacles]);
 
   return (
     <motion.div 
@@ -163,7 +142,6 @@ function NotFound() {
     >
       <div className="container">
         <div className="not-found-content">
-          {/* Glitchy 404 Title */}
           <h1 className="glitch-title" data-text="404">
             <span className="glitch-text">404</span>
           </h1>
@@ -172,7 +150,6 @@ function NotFound() {
             ERROR: SECTOR_NOT_FOUND. INITIALIZING EMERGENCY_RUN.EXE
           </p>
 
-          {/* Game System */}
           <div className="mini-game-system">
             <div className="game-stats">
               <span>SCORE: {score}</span>
@@ -186,10 +163,8 @@ function NotFound() {
               className="game-window" 
               onClick={() => !gameStarted ? startGame() : jump()}
             >
-              {/* Scrolling Background */}
               <div className={`scrolling-bg ${gameStarted ? 'running' : ''}`}></div>
 
-              {/* Start/Game Over Overlay */}
               {!gameStarted && (
                 <div className="game-overlay">
                   <div className="status-text">
@@ -213,7 +188,6 @@ function NotFound() {
                 </div>
               )}
 
-              {/* Player */}
               <div 
                 className="player-character" 
                 style={{ bottom: `${10 + playerY}px` }}
@@ -221,7 +195,6 @@ function NotFound() {
                 <div className="hero-body"></div>
               </div>
 
-              {/* Obstacles - SIMPLIFIED FOR VISIBILITY */}
               {obstacles.map(obs => (
                 <div 
                   key={obs.id} 
@@ -232,7 +205,6 @@ function NotFound() {
                 </div>
               ))}
               
-              {/* Floor */}
               <div className="cyber-floor"></div>
             </div>
 
@@ -241,12 +213,10 @@ function NotFound() {
             </div>
           </div>
 
-          {/* Back to Home */}
           <Link to="/" className="back-home-link">
             ← RETURN_TO_BASE
           </Link>
 
-          {/* Quick Links */}
           <div className="quick-nav">
             <Link to="/projects">PROJECTS</Link>
             <Link to="/about">ABOUT</Link>

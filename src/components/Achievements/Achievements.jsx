@@ -23,10 +23,11 @@ function Achievements({ achievements, onAchievementUnlock }) {
   
   // FIXED: Unlock first-visit immediately on mount
   useEffect(() => {
-    if (onAchievementUnlock) {
-      onAchievementUnlock('first-visit');
-    }
-  }, []); // Run once on mount
+  if (onAchievementUnlock) {
+    onAchievementUnlock('first-visit');
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []); // Run once on mount
   
   // Track page visits
   useEffect(() => {
