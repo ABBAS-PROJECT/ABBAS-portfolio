@@ -7,20 +7,20 @@
   // Dark Theme (Default)
   --bg-primary: #0a0a0a;
   --bg-secondary: #161616;
-  --bg-tertiary: #222222;       // Added (needed by components)
+  --bg-tertiary: #222222;
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
-  --text-tertiary: #666666;     // Added (needed by components)
-  --primary: #2563eb;           // Professional Blue - YOUR COLOR!
-  --primary-hover: #3b82f6;     // Added (needed by components)
-  --primary-light: #3b82f6;     // Added (needed by components)
-  --success: #10b981;           // Success Green - YOUR COLOR!
+  --text-tertiary: #666666;
+  --primary: #2563eb;           // Professional Blue
+  --primary-hover: #3b82f6;
+  --primary-light: #3b82f6;
+  --success: #10b981;           // Success Green
   --border-color: #222;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --shadow-hover: 0 8px 20px rgba(37, 99, 235, 0.3); // Added (needed)
+  --shadow-hover: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
-// Light theme (for users who prefer it)
+// Light theme
 .light {
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
@@ -37,23 +37,22 @@
   --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-// 2. THE 10% GAMING: CYBER-ABBAS RETRO THEME
+// 2. RETRO THEME VARIABLES
 .retro {
-  --bg-primary: #050510;      // Deep Space Blue
-  --bg-secondary: #0a0a25;    // Dark Terminal
-  --bg-tertiary: #1a1a40;     // Added (needed by components)
-  --primary: #00e5ff;         // Ghost Cyan
-  --primary-hover: #00b8d4;   // Added (needed by components)
-  --primary-light: #4df3ff;   // Added (needed by components)
+  --bg-primary: #050510;
+  --bg-secondary: #0a0a25;
+  --bg-tertiary: #1a1a40;
+  --primary: #00e5ff;
+  --primary-hover: #00b8d4;
+  --primary-light: #4df3ff;
   --text-primary: #ffffff;
   --text-secondary: #8b9bb4;
-  --text-tertiary: #6b7b94;   // Added (needed by components)
+  --text-tertiary: #6b7b94;
   --border-color: #1a1a40;
-  --success: #ff0077;         // Arcade Pink
+  --success: #ff0077;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  --shadow-hover: 0 8px 20px rgba(0, 229, 255, 0.3); // Added (needed)
+  --shadow-hover: 0 8px 20px rgba(0, 229, 255, 0.3);
   
-  // Retro Typography: Makes the professional font look slightly pixelated
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -64,25 +63,7 @@
   position: relative;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease; // Smooth theme switching
-  
-  // FIXED: Apply CRT scanline as overlay (only for retro theme)
-  &.retro::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(
-      rgba(18, 16, 16, 0) 50%, 
-      rgba(0, 0, 0, 0.08) 50%
-    );
-    background-size: 100% 4px;
-    background-attachment: fixed;
-    pointer-events: none;
-    z-index: 9998;
-  }
+  transition: background-color 0.3s ease;
 }
 
 .app-content {
@@ -96,7 +77,27 @@
   }
 }
 
-// 4. NAVIGATION HINT (PROFESSIONAL CLI STYLE)
+// 4. RETRO SCANLINE OVERLAY (More explicit for production)
+.App.retro::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.08) 50%
+  );
+  background-size: 100% 4px;
+  background-attachment: fixed;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+// 5. NAVIGATION HINT
 .console-hint {
   position: fixed;
   bottom: 1rem;
@@ -106,7 +107,7 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   font-size: 0.7rem;
-  font-family: 'Fira Code', monospace; // Coder font
+  font-family: 'Fira Code', monospace;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
   z-index: 1000;
@@ -119,7 +120,7 @@
   }
 }
 
-// 5. PAGE LOADER
+// 6. PAGE LOADER
 .page-loader {
   display: flex;
   justify-content: center;
