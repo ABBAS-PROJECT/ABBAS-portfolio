@@ -11,6 +11,7 @@ import ThemeSwitcher from './components/ThemeSwitcher/ThemeSwitcher';
 import Snake from './components/Snake/Snake';
 import Achievements from './components/Achievements/Achievements';
 import DeveloperConsole from './components/DeveloperConsole/DeveloperConsole';
+import RetroScanline from './components/RetroScanline/RetroScanline'; // NEW!
 
 // Pages (lazy loaded for better performance)
 const Home = lazy(() => import('./pages/Home/Home'));
@@ -123,6 +124,10 @@ function App() {
         <div className="app-content">
           <AnimatedRoutes unlockAchievement={unlockAchievement} />
         </div>
+        
+        {/* RETRO SCANLINE - Only shows in retro mode */}
+        {theme === 'retro' && <RetroScanline />}
+        
         <ThemeSwitcher currentTheme={theme} onThemeChange={handleThemeChange} />
         <MixBot onAchievementUnlock={unlockAchievement} />
         <Snake />

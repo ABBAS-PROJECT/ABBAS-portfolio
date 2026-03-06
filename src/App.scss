@@ -2,25 +2,23 @@
 // APP.SCSS - GLOBAL THEME VARIABLES
 // ============================================
 
-// 1. PROFESSIONAL ROOT VARIABLES (Used by all pages)
+// 1. PROFESSIONAL ROOT VARIABLES
 :root {
-  // Dark Theme (Default)
   --bg-primary: #0a0a0a;
   --bg-secondary: #161616;
   --bg-tertiary: #222222;
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   --text-tertiary: #666666;
-  --primary: #2563eb;           // Professional Blue
+  --primary: #2563eb;
   --primary-hover: #3b82f6;
   --primary-light: #3b82f6;
-  --success: #10b981;           // Success Green
+  --success: #10b981;
   --border-color: #222;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-hover: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
-// Light theme
 .light {
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
@@ -37,7 +35,7 @@
   --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-// 2. RETRO THEME VARIABLES
+// 2. RETRO THEME - NO BACKGROUND HERE!
 .retro {
   --bg-primary: #050510;
   --bg-secondary: #0a0a25;
@@ -57,7 +55,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-// 3. MAIN APP LAYOUT
+// 3. MAIN APP LAYOUT - NO ::before HERE!
 .App {
   min-height: 100vh;
   position: relative;
@@ -77,27 +75,6 @@
   }
 }
 
-// 4. RETRO SCANLINE OVERLAY (More explicit for production)
-.App.retro::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.08) 50%
-  );
-  background-size: 100% 4px;
-  background-attachment: fixed;
-  pointer-events: none;
-  z-index: 9998;
-}
-
-// 5. NAVIGATION HINT
 .console-hint {
   position: fixed;
   bottom: 1rem;
@@ -120,7 +97,6 @@
   }
 }
 
-// 6. PAGE LOADER
 .page-loader {
   display: flex;
   justify-content: center;

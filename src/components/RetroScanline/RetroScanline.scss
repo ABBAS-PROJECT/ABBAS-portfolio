@@ -1,0 +1,17 @@
+.retro-scanline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.08) 50%
+  );
+  background-size: 100% 4px;
+  background-attachment: fixed;
+  pointer-events: none;
+  z-index: 9998;
+}
