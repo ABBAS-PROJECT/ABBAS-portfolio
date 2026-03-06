@@ -1,52 +1,109 @@
-import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { FaHome, FaUser, FaCode, FaBriefcase, FaRocket, FaGraduationCap, FaEnvelope, FaArrowLeft } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaHome, FaUser, FaCode, FaBriefcase, FaProjectDiagram, FaGraduationCap, FaEnvelope, FaArrowLeft } from 'react-icons/fa';
+import { MdLightMode, MdDarkMode } from 'react-icons/md';
+import { IoGameController } from 'react-icons/io5';
 import './Navbar.scss';
 
-function Navbar() {
+function Navbar({ currentTheme, onThemeChange }) {
   const location = useLocation();
-  const navigate = useNavigate();
-  
+  const [showThemeMenu, setShowThemeMenu] = useState(false);
+  const isHome = location.pathname === '/';
+
   const navItems = [
     { path: '/', label: 'Home', icon: <FaHome /> },
     { path: '/about', label: 'About', icon: <FaUser /> },
     { path: '/skills', label: 'Skills', icon: <FaCode /> },
     { path: '/experience', label: 'Experience', icon: <FaBriefcase /> },
-    { path: '/projects', label: 'Projects', icon: <FaRocket /> },
+    { path: '/projects', label: 'Projects', icon: <FaProjectDiagram /> },
     { path: '/education', label: 'Education', icon: <FaGraduationCap /> },
-    { path: '/contact', label: 'Contact', icon: <FaEnvelope /> }
+    { path: '/contact', label: 'Contact', icon: <FaEnvelope /> },
   ];
+
+  const themeIcons = {
+    light: <MdLightMode />,
+    dark: <MdDarkMode />,
+    retro: <IoGameController />
+  };
+
+  const themeLabels = {
+    light: 'Light',
+    dark: 'Dark',
+    retro: 'Retro'
+  };
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        {location.pathname !== '/' && (
-          <motion.button
-            className="back-btn"
-            onClick={() => navigate(-1)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-          >
+      <div className="nav-content">
+        {!isHome && (
+          <Link to="/" className="back-btn">
             <FaArrowLeft />
             <span>Back</span>
-          </motion.button>
+          </Link>
         )}
-        
-        <div className="nav-links">
+
+        <ul className="nav-links">
           {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-            >
-              <span className="nav-icon">{item.icon}</span>
-              <span className="nav-label">{item.label}</span>
-            </Link>
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={location.pathname === item.path ? 'active' : ''}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </Link>
+            </li>
           ))}
-        </div>
+          
+          {/* THEME SWITCHER INTEGRATED */}
+          <li className="theme-item">
+            <button 
+              className={`theme-btn ${showThemeMenu ? 'active' : ''}`}
+              onClick={() => setShowThemeMenu(!showThemeMenu)}
+            >
+              {themeIcons[currentTheme]}
+              <span>{themeLabels[currentTheme]}</span>
+            </button>
+            
+            {showThemeMenu && (
+              <div className="theme-menu">
+                <button 
+                  className={currentTheme === 'light' ? 'active' : ''}
+                  onClick={() => {
+                    onThemeChange('light');
+                    setShowThemeMenu(false);
+                  }}
+                >
+                  <MdLightMode />
+                  <span>Light</span>
+                  {currentTheme === 'light' && <span>✓</span>}
+                </button>
+                <button 
+                  className={currentTheme === 'dark' ? 'active' : ''}
+                  onClick={() => {
+                    onThemeChange('dark');
+                    setShowThemeMenu(false);
+                  }}
+                >
+                  <MdDarkMode />
+                  <span>Dark</span>
+                  {currentTheme === 'dark' && <span>✓</span>}
+                </button>
+                <button 
+                  className={currentTheme === 'retro' ? 'active' : ''}
+                  onClick={() => {
+                    onThemeChange('retro');
+                    setShowThemeMenu(false);
+                  }}
+                >
+                  <IoGameController />
+                  <span>Retro</span>
+                  {currentTheme === 'retro' && <span>✓</span>}
+                </button>
+              </div>
+            )}
+          </li>
+        </ul>
       </div>
     </nav>
   );

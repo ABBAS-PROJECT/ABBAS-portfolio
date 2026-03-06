@@ -2,7 +2,7 @@
 // APP.SCSS - GLOBAL THEME VARIABLES
 // ============================================
 
-// 1. PROFESSIONAL ROOT VARIABLES
+// 1. DARK THEME (Default)
 :root {
   --bg-primary: #0a0a0a;
   --bg-secondary: #161616;
@@ -19,6 +19,7 @@
   --shadow-hover: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
+// 2. LIGHT THEME
 .light {
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
@@ -35,7 +36,7 @@
   --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-// 2. RETRO THEME - NO BACKGROUND HERE!
+// 3. RETRO THEME - ONLY COLORS!
 .retro {
   --bg-primary: #050510;
   --bg-secondary: #0a0a25;
@@ -50,12 +51,9 @@
   --success: #ff0077;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   --shadow-hover: 0 8px 20px rgba(0, 229, 255, 0.3);
-  
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
 }
 
-// 3. MAIN APP LAYOUT - NO ::before HERE!
+// 4. MAIN APP LAYOUT
 .App {
   min-height: 100vh;
   position: relative;

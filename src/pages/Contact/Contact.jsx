@@ -167,13 +167,6 @@ function Contact() {
                   </div>
                 </div>
               </div>
-              
-              <a 
-                href={`mailto:${contactInfo.email}`}
-                className="btn btn-primary btn-large"
-              >
-                Send Me an Email
-              </a>
             </div>
           </motion.div>
         </div>

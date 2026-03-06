@@ -85,7 +85,7 @@ function Home() {
             <Link to="/projects" className="btn btn-primary">View My Work</Link>
             <Link to="/contact" className="btn btn-secondary">Get In Touch</Link>
             <a 
-              href="https://drive.google.com/file/d/1GMpmNyNHqFlsrf6wVeZUQQsBlnFWfaQG/view"
+              href="https://drive.google.com/file/d/1OBe-XdqeEGlRRg8wklqlxJxysNAEFIep/view"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-cv"
