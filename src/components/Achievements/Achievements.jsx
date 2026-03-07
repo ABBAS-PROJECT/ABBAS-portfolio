@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Achievements.scss';
@@ -16,59 +16,79 @@ const ACHIEVEMENTS = [
 
 function Achievements({ achievements, onAchievementUnlock }) {
   const [expanded, setExpanded] = useState(false);
-  const [visitedPages, setVisitedPages] = useState(new Set());
-  const [startTime] = useState(Date.now());
-  const [pageViewTimes, setPageViewTimes] = useState({});
   const location = useLocation();
   
-  // FIXED: Unlock first-visit immediately on mount
+  // Use refs to prevent re-render loops
+  const visitedPagesRef = useRef(new Set());
+  const startTimeRef = useRef(Date.now());
+  const pageViewTimesRef = useRef({});
+  const enterTimeRef = useRef(null);
+  const hasCheckedFirstVisit = useRef(false);
+  const hasCheckedNightOwl = useRef(false);
+
+  // Unlock first visit once
   useEffect(() => {
-  if (onAchievementUnlock) {
-    onAchievementUnlock('first-visit');
-  }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []); // Run once on mount
-  
-  // Track page visits
-  useEffect(() => {
-    const newVisited = new Set(visitedPages);
-    newVisited.add(location.pathname);
-    setVisitedPages(newVisited);
-    
-    const enterTime = Date.now();
-    
-    const allPages = ['/', '/about', '/skills', '/experience', '/projects', '/education', '/contact'];
-    const visitedAll = allPages.every(page => newVisited.has(page));
-    
-    if (visitedAll && onAchievementUnlock) {
-      onAchievementUnlock('explorer');
-      
-      if ((Date.now() - startTime) < 60000) {
-        onAchievementUnlock('speed-runner');
-      }
-      
-      const viewedAllSections = allPages.every(page => pageViewTimes[page] && pageViewTimes[page] >= 2000);
-      if (viewedAllSections) {
-        onAchievementUnlock('full-stack');
-      }
-    }
-    
-    return () => {
-      const timeSpent = Date.now() - enterTime;
-      setPageViewTimes(prev => ({
-        ...prev,
-        [location.pathname]: (prev[location.pathname] || 0) + timeSpent
-      }));
-    };
-  }, [location.pathname, onAchievementUnlock, visitedPages, startTime, pageViewTimes]);
-  
-  // Check night owl
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if ((hour >= 20 || hour < 6) && onAchievementUnlock) {
-      onAchievementUnlock('night-owl');
+    if (!hasCheckedFirstVisit.current && onAchievementUnlock) {
+      hasCheckedFirstVisit.current = true;
+      onAchievementUnlock('first-visit');
     }
   }, [onAchievementUnlock]);
+
+  // Check night owl once
+  useEffect(() => {
+    if (!hasCheckedNightOwl.current && onAchievementUnlock) {
+      hasCheckedNightOwl.current = true;
+      const hour = new Date().getHours();
+      if (hour >= 20 || hour < 6) {
+        onAchievementUnlock('night-owl');
+      }
+    }
+  }, [onAchievementUnlock]);
+
+  // Track page visits
+  useEffect(() => {
+    const currentPath = location.pathname;
+    
+    // Record entry time
+    enterTimeRef.current = Date.now();
+    
+    // Add to visited pages
+    visitedPagesRef.current.add(currentPath);
+    
+    const allPages = ['/', '/about', '/skills', '/experience', '/projects', '/education', '/contact'];
+    
+    // Check if visited all pages
+    const visitedAll = allPages.every(page => visitedPagesRef.current.has(page));
+    
+    if (visitedAll && onAchievementUnlock) {
+      // Unlock Explorer
+      onAchievementUnlock('explorer');
+      
+      // Check Speed Runner (visited all in under 60 seconds)
+      const totalTime = Date.now() - startTimeRef.current;
+      if (totalTime < 60000) {
+        onAchievementUnlock('speed-runner');
+      }
+    }
+
+    // Cleanup: Track time spent when leaving page
+    return () => {
+      if (enterTimeRef.current && onAchievementUnlock) {
+        const timeSpent = Date.now() - enterTimeRef.current;
+        pageViewTimesRef.current[currentPath] = (pageViewTimesRef.current[currentPath] || 0) + timeSpent;
+        
+        // Check Full Stack (spent 2+ seconds on each page)
+        const viewedAllProperly = allPages.every(page => {
+          const time = pageViewTimesRef.current[page] || 0;
+          return time >= 2000; // 2 seconds minimum
+        });
+        
+        if (viewedAllProperly) {
+          onAchievementUnlock('full-stack');
+        }
+      }
+    };
+  }, [location.pathname, onAchievementUnlock]);
 
   const unlockedCount = achievements?.length || 0;
   const totalCount = ACHIEVEMENTS.length;
@@ -80,6 +100,7 @@ function Achievements({ achievements, onAchievementUnlock }) {
         onClick={() => setExpanded(!expanded)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        aria-label="View Achievements"
       >
         <span className="trophy">🏆</span>
         <span className="count">{unlockedCount}/{totalCount}</span>
@@ -95,7 +116,7 @@ function Achievements({ achievements, onAchievementUnlock }) {
           >
             <div className="panel-header">
               <h3>Achievements</h3>
-              <button className="close-btn" onClick={() => setExpanded(false)}>✕</button>
+              <button className="close-btn" onClick={() => setExpanded(false)} aria-label="Close">✕</button>
             </div>
             
             <div className="achievements-list">

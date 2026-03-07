@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import './PacManTransition.scss'  // CORRECT FILE!
+import './PacManTransition.scss';
 
-function PacManTransition() {
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [prevPath, setPrevPath] = useState('');
+function PacManTransition({ isTransitioning }) {
   const location = useLocation();
-  
-  useEffect(() => {
-    if (prevPath && prevPath !== location.pathname) {
-      setIsTransitioning(true);
-      // The "Sweet Spot": 1.2 seconds total
-      setTimeout(() => setIsTransitioning(false), 1200); 
-    }
-    setPrevPath(location.pathname);
-  }, [location.pathname, prevPath]);
   
   return (
     <AnimatePresence>
@@ -50,7 +39,6 @@ function PacManTransition() {
                 animate={{ x: '125vw' }}
                 transition={{ duration: 1.2, ease: "linear" }}
               >
-                {/* FIXED: Forward-eating Pac-Man */}
                 <div className="pacman">
                   <div className="mouth-top"></div>
                   <div className="mouth-bottom"></div>

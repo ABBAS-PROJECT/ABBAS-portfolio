@@ -31,36 +31,34 @@ const PageLoader = () => (
   </div>
 );
 
-function AnimatedRoutes({ unlockAchievement }) {
+function AnimatedRoutes({ setIsTransitioning }) {
   const location = useLocation();
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [prevPath, setPrevPath] = useState('');
   
   useEffect(() => {
-    setIsTransitioning(true);
-    const timer = setTimeout(() => setIsTransitioning(false), 1200);
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
+    if (prevPath && prevPath !== location.pathname) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => setIsTransitioning(false), 1200);
+      return () => clearTimeout(timer);
+    }
+    setPrevPath(location.pathname);
+  }, [location.pathname, prevPath, setIsTransitioning]);
   
   return (
-    <>
-      <PacManTransition />
-      {!isTransitioning && (
-        <AnimatePresence mode="wait">
-          <Suspense fallback={<PageLoader />}>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/experience" element={<Experience />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/education" element={<Education />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </AnimatePresence>
-      )}
-    </>
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<PageLoader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/education" element={<Education />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </AnimatePresence>
   );
 }
 
@@ -68,6 +66,7 @@ function App() {
   const [theme, setTheme] = useState('dark');
   const [consoleOpen, setConsoleOpen] = useState(false);
   const [achievements, setAchievements] = useState([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Memoized unlock function
   const unlockAchievement = useCallback((achievementId) => {
@@ -118,21 +117,39 @@ function App() {
   return (
     <Router>
       <div className={`App ${theme}`}>
-        <Navbar currentTheme={theme} onThemeChange={handleThemeChange} />
-        <div className="app-content">
-          <AnimatedRoutes unlockAchievement={unlockAchievement} />
-        </div>
-        <MixBot onAchievementUnlock={unlockAchievement} />
-        <Snake />
-        <Achievements achievements={achievements} onAchievementUnlock={unlockAchievement} />
-        {consoleOpen && (
-          <DeveloperConsole 
-            onClose={() => setConsoleOpen(false)}
-            achievements={achievements}
-            currentTheme={theme}
-            onThemeChange={handleThemeChange}
-          />
+        {/* HIDE THESE WHEN TRANSITIONING */}
+        {!isTransitioning && (
+          <>
+            <Navbar currentTheme={theme} onThemeChange={handleThemeChange} />
+            <MixBot onAchievementUnlock={unlockAchievement} />
+            <Snake />
+            {consoleOpen && (
+              <DeveloperConsole 
+                onClose={() => setConsoleOpen(false)}
+                achievements={achievements}
+                currentTheme={theme}
+                onThemeChange={handleThemeChange}
+              />
+            )}
+          </>
         )}
+        
+        {/* PACMAN TRANSITION - ALWAYS RENDERED */}
+        <PacManTransition isTransitioning={isTransitioning} />
+        
+        {/* ACHIEVEMENTS - ALWAYS MOUNTED (hidden during transition) */}
+        <div style={{ 
+          opacity: isTransitioning ? 0 : 1, 
+          transition: 'opacity 0.2s',
+          pointerEvents: isTransitioning ? 'none' : 'auto'
+        }}>
+          <Achievements achievements={achievements} onAchievementUnlock={unlockAchievement} />
+        </div>
+        
+        {/* PAGE CONTENT */}
+        <div className="app-content">
+          <AnimatedRoutes setIsTransitioning={setIsTransitioning} />
+        </div>
       </div>
     </Router>
   );

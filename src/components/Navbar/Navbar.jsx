@@ -33,79 +33,134 @@ function Navbar({ currentTheme, onThemeChange }) {
   };
 
   return (
-    <nav className="navbar">
-      <div className="nav-content">
-        {!isHome && (
-          <Link to="/" className="back-btn">
-            <FaArrowLeft />
-            <span>Back</span>
-          </Link>
-        )}
+    <>
+      <nav className="navbar">
+        <div className="nav-content">
+          {!isHome && (
+            <Link to="/" className="back-btn">
+              <FaArrowLeft />
+              <span>Back</span>
+            </Link>
+          )}
 
-        <ul className="nav-links">
-          {navItems.map((item) => (
-            <li key={item.path}>
-              <Link
-                to={item.path}
-                className={location.pathname === item.path ? 'active' : ''}
-              >
-                {item.icon}
-                <span>{item.label}</span>
-              </Link>
-            </li>
-          ))}
-          
-          {/* THEME SWITCHER INTEGRATED */}
-          <li className="theme-item">
-            <button 
-              className={`theme-btn ${showThemeMenu ? 'active' : ''}`}
-              onClick={() => setShowThemeMenu(!showThemeMenu)}
-            >
-              {themeIcons[currentTheme]}
-              <span>{themeLabels[currentTheme]}</span>
-            </button>
+          <ul className="nav-links">
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className={location.pathname === item.path ? 'active' : ''}
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            ))}
             
-            {showThemeMenu && (
-              <div className="theme-menu">
+            {/* THEME SWITCHER - ONLY IN DARK/LIGHT MODE */}
+            {currentTheme !== 'retro' && (
+              <li className="theme-item">
                 <button 
-                  className={currentTheme === 'light' ? 'active' : ''}
-                  onClick={() => {
-                    onThemeChange('light');
-                    setShowThemeMenu(false);
-                  }}
+                  className={`theme-btn ${showThemeMenu ? 'active' : ''}`}
+                  onClick={() => setShowThemeMenu(!showThemeMenu)}
                 >
-                  <MdLightMode />
-                  <span>Light</span>
-                  {currentTheme === 'light' && <span>✓</span>}
+                  {themeIcons[currentTheme]}
+                  <span>{themeLabels[currentTheme]}</span>
                 </button>
-                <button 
-                  className={currentTheme === 'dark' ? 'active' : ''}
-                  onClick={() => {
-                    onThemeChange('dark');
-                    setShowThemeMenu(false);
-                  }}
-                >
-                  <MdDarkMode />
-                  <span>Dark</span>
-                  {currentTheme === 'dark' && <span>✓</span>}
-                </button>
-                <button 
-                  className={currentTheme === 'retro' ? 'active' : ''}
-                  onClick={() => {
-                    onThemeChange('retro');
-                    setShowThemeMenu(false);
-                  }}
-                >
-                  <IoGameController />
-                  <span>Retro</span>
-                  {currentTheme === 'retro' && <span>✓</span>}
-                </button>
-              </div>
+                
+                {showThemeMenu && (
+                  <div className="theme-menu">
+                    <button 
+                      className={currentTheme === 'light' ? 'active' : ''}
+                      onClick={() => {
+                        onThemeChange('light');
+                        setShowThemeMenu(false);
+                      }}
+                    >
+                      <MdLightMode />
+                      <span>Light</span>
+                      {currentTheme === 'light' && <span>✓</span>}
+                    </button>
+                    <button 
+                      className={currentTheme === 'dark' ? 'active' : ''}
+                      onClick={() => {
+                        onThemeChange('dark');
+                        setShowThemeMenu(false);
+                      }}
+                    >
+                      <MdDarkMode />
+                      <span>Dark</span>
+                      {currentTheme === 'dark' && <span>✓</span>}
+                    </button>
+                    <button 
+                      className={currentTheme === 'retro' ? 'active' : ''}
+                      onClick={() => {
+                        onThemeChange('retro');
+                        setShowThemeMenu(false);
+                      }}
+                    >
+                      <IoGameController />
+                      <span>Retro</span>
+                      {currentTheme === 'retro' && <span>✓</span>}
+                    </button>
+                  </div>
+                )}
+              </li>
             )}
-          </li>
-        </ul>
-      </div>
-    </nav>
+          </ul>
+        </div>
+      </nav>
+
+      {/* FLOATING THEME SWITCHER - ONLY IN RETRO MODE */}
+      {currentTheme === 'retro' && (
+        <div className="floating-theme-switcher">
+          <button 
+            className={`theme-btn ${showThemeMenu ? 'active' : ''}`}
+            onClick={() => setShowThemeMenu(!showThemeMenu)}
+          >
+            {themeIcons[currentTheme]}
+            <span>{themeLabels[currentTheme]}</span>
+          </button>
+          
+          {showThemeMenu && (
+            <div className="theme-menu">
+              <button 
+                className={currentTheme === 'light' ? 'active' : ''}
+                onClick={() => {
+                  onThemeChange('light');
+                  setShowThemeMenu(false);
+                }}
+              >
+                <MdLightMode />
+                <span>Light</span>
+                {currentTheme === 'light' && <span>✓</span>}
+              </button>
+              <button 
+                className={currentTheme === 'dark' ? 'active' : ''}
+                onClick={() => {
+                  onThemeChange('dark');
+                  setShowThemeMenu(false);
+                }}
+              >
+                <MdDarkMode />
+                <span>Dark</span>
+                {currentTheme === 'dark' && <span>✓</span>}
+              </button>
+              <button 
+                className={currentTheme === 'retro' ? 'active' : ''}
+                onClick={() => {
+                  onThemeChange('retro');
+                  setShowThemeMenu(false);
+                }}
+              >
+                <IoGameController />
+                <span>Retro</span>
+                {currentTheme === 'retro' && <span>✓</span>}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 
