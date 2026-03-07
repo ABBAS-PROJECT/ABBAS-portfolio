@@ -24,7 +24,6 @@ function Achievements({ achievements, onAchievementUnlock }) {
   const pageViewTimesRef = useRef({});
   const enterTimeRef = useRef(null);
   const hasCheckedFirstVisit = useRef(false);
-  const hasCheckedNightOwl = useRef(false);
 
   // Unlock first visit once
   useEffect(() => {
@@ -34,10 +33,9 @@ function Achievements({ achievements, onAchievementUnlock }) {
     }
   }, [onAchievementUnlock]);
 
-  // Check night owl once
+  // Check night owl every time component mounts
   useEffect(() => {
-    if (!hasCheckedNightOwl.current && onAchievementUnlock) {
-      hasCheckedNightOwl.current = true;
+    if (onAchievementUnlock) {
       const hour = new Date().getHours();
       if (hour >= 20 || hour < 6) {
         onAchievementUnlock('night-owl');
@@ -75,12 +73,13 @@ function Achievements({ achievements, onAchievementUnlock }) {
     return () => {
       if (enterTimeRef.current && onAchievementUnlock) {
         const timeSpent = Date.now() - enterTimeRef.current;
-        pageViewTimesRef.current[currentPath] = (pageViewTimesRef.current[currentPath] || 0) + timeSpent;
+        const currentPageTimes = pageViewTimesRef.current;
+        currentPageTimes[currentPath] = (currentPageTimes[currentPath] || 0) + timeSpent;
         
         // Check Full Stack (spent 2+ seconds on each page)
         const viewedAllProperly = allPages.every(page => {
-          const time = pageViewTimesRef.current[page] || 0;
-          return time >= 2000; // 2 seconds minimum
+          const time = currentPageTimes[page] || 0;
+          return time >= 2000;
         });
         
         if (viewedAllProperly) {
