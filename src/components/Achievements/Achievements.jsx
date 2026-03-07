@@ -18,14 +18,12 @@ function Achievements({ achievements, onAchievementUnlock }) {
   const [expanded, setExpanded] = useState(false);
   const location = useLocation();
   
-  // Use refs to prevent re-render loops
   const visitedPagesRef = useRef(new Set());
   const startTimeRef = useRef(Date.now());
   const pageViewTimesRef = useRef({});
   const enterTimeRef = useRef(null);
   const hasCheckedFirstVisit = useRef(false);
 
-  // Unlock first visit once
   useEffect(() => {
     if (!hasCheckedFirstVisit.current && onAchievementUnlock) {
       hasCheckedFirstVisit.current = true;
@@ -33,7 +31,6 @@ function Achievements({ achievements, onAchievementUnlock }) {
     }
   }, [onAchievementUnlock]);
 
-  // Check night owl every time component mounts
   useEffect(() => {
     if (onAchievementUnlock) {
       const hour = new Date().getHours();
@@ -43,42 +40,32 @@ function Achievements({ achievements, onAchievementUnlock }) {
     }
   }, [onAchievementUnlock]);
 
-  // Track page visits
   useEffect(() => {
     const currentPath = location.pathname;
+    const pageTimes = pageViewTimesRef.current; // Copy ref to variable
     
-    // Record entry time
     enterTimeRef.current = Date.now();
-    
-    // Add to visited pages
     visitedPagesRef.current.add(currentPath);
     
     const allPages = ['/', '/about', '/skills', '/experience', '/projects', '/education', '/contact'];
-    
-    // Check if visited all pages
     const visitedAll = allPages.every(page => visitedPagesRef.current.has(page));
     
     if (visitedAll && onAchievementUnlock) {
-      // Unlock Explorer
       onAchievementUnlock('explorer');
       
-      // Check Speed Runner (visited all in under 60 seconds)
       const totalTime = Date.now() - startTimeRef.current;
       if (totalTime < 60000) {
         onAchievementUnlock('speed-runner');
       }
     }
 
-    // Cleanup: Track time spent when leaving page
     return () => {
       if (enterTimeRef.current && onAchievementUnlock) {
         const timeSpent = Date.now() - enterTimeRef.current;
-        const currentPageTimes = pageViewTimesRef.current;
-        currentPageTimes[currentPath] = (currentPageTimes[currentPath] || 0) + timeSpent;
+        pageTimes[currentPath] = (pageTimes[currentPath] || 0) + timeSpent;
         
-        // Check Full Stack (spent 2+ seconds on each page)
         const viewedAllProperly = allPages.every(page => {
-          const time = currentPageTimes[page] || 0;
+          const time = pageTimes[page] || 0;
           return time >= 2000;
         });
         
