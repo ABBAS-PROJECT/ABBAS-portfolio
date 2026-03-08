@@ -117,17 +117,16 @@
     
     .theme-item {
       position: relative;
-      margin-left: auto;
+      margin-left: auto; // PUSH TO FAR RIGHT!
       
       .theme-btn {
         border: 1px solid var(--border-color);
-        padding: 0.75rem; // ICON ONLY - square button
+        padding: 0.75rem;
         
         svg {
           color: var(--primary);
         }
         
-        // HIDE TEXT - ICON ONLY!
         span {
           display: none;
         }
@@ -140,14 +139,14 @@
       .theme-menu {
         position: absolute;
         top: calc(100% + 0.5rem);
-        right: 0;
+        right: 0; // ALIGNED TO RIGHT - WON'T CLIP!
         background: var(--bg-secondary);
         border: 1px solid var(--border-color);
         border-radius: 0.5rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         min-width: 110px;
         max-width: 110px;
-        z-index: 15000; // HIGHER THAN ACHIEVEMENTS!
+        z-index: 15000;
         overflow: hidden;
         
         button {
@@ -198,13 +197,26 @@
       }
     }
   }
+  
+  // MOBILE RESPONSIVENESS
+  @media (max-width: 768px) {
+    .nav-links {
+      .theme-item {
+        .theme-menu {
+          right: 0;
+          min-width: 100px;
+          max-width: 100px;
+        }
+      }
+    }
+  }
 }
 
 // RETRO MODE: COMPRESSED NAVBAR
 .retro .navbar {
   
   .nav-content {
-    gap: 0.6rem; // REDUCED for better spacing
+    gap: 0.5rem;
     padding: 0 1.5rem;
   }
   
@@ -219,7 +231,7 @@
   }
   
   .nav-links {
-    gap: 0.3rem; // ADJUSTED for better spacing
+    gap: 0.25rem;
     
     li {
       a {
@@ -240,103 +252,29 @@
         }
       }
     }
-  }
-}
-
-// FLOATING THEME SWITCHER IN RETRO MODE
-.floating-theme-switcher {
-  position: fixed;
-  top: 1rem;
-  right: 1.5rem;
-  z-index: 10002;
-  
-  .theme-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem; // ICON ONLY - square button
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 1px solid var(--primary);
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.7rem;
-    font-weight: 500;
-    font-family: 'Fira Code', monospace;
     
-    svg {
-      font-size: 0.85rem;
-      color: var(--primary);
-    }
-    
-    // HIDE TEXT - ICON ONLY!
-    span {
-      display: none;
-    }
-    
-    &:hover {
-      box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
-      transform: scale(1.05);
-    }
-  }
-  
-  .theme-menu {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    right: 0;
-    background: var(--bg-secondary);
-    border: 1px solid var(--primary);
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 16px rgba(0, 229, 255, 0.4);
-    min-width: 100px;
-    max-width: 100px;
-    z-index: 15000; // HIGHER THAN ACHIEVEMENTS!
-    overflow: hidden;
-    
-    button {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      width: 100%;
-      padding: 0.55rem 0.7rem;
-      background: transparent;
-      color: var(--text-primary);
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 0.7rem;
-      font-family: 'Fira Code', monospace;
-      text-align: left;
-      white-space: nowrap;
-      
-      svg {
-        font-size: 0.85rem;
-        color: var(--primary);
-        flex-shrink: 0;
-      }
-      
-      &:not(:last-child) {
-        border-bottom: 1px solid var(--border-color);
-      }
-      
-      &:hover {
-        background: var(--bg-tertiary);
-      }
-      
-      &.active {
-        background: var(--primary);
-        color: white;
+    .theme-item {
+      .theme-btn {
+        padding: 0.55rem;
         
-        svg {
-          color: white;
+        span {
+          display: none;
         }
       }
       
-      span:last-child {
-        margin-left: auto;
-        font-weight: bold;
-        font-size: 0.65rem;
+      .theme-menu {
+        border-color: var(--primary);
+        box-shadow: 0 4px 16px rgba(0, 229, 255, 0.4);
+        min-width: 100px;
+        
+        button {
+          font-size: 0.7rem;
+          padding: 0.55rem 0.7rem;
+          
+          svg {
+            font-size: 0.85rem;
+          }
+        }
       }
     }
   }
