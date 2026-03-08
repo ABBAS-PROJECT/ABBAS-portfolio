@@ -117,7 +117,7 @@
     
     .theme-item {
       position: relative;
-      margin-left: auto; // PUSH TO FAR RIGHT!
+      margin-left: auto;
       
       .theme-btn {
         border: 1px solid var(--border-color);
@@ -139,7 +139,7 @@
       .theme-menu {
         position: absolute;
         top: calc(100% + 0.5rem);
-        right: 0; // ALIGNED TO RIGHT - WON'T CLIP!
+        right: 0;
         background: var(--bg-secondary);
         border: 1px solid var(--border-color);
         border-radius: 0.5rem;
@@ -273,6 +273,48 @@
           
           svg {
             font-size: 0.85rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// MOBILE RETRO MODE - EXTRA COMPACT
+@media (max-width: 768px) {
+  .retro .navbar {
+    .nav-content {
+      gap: 0.2rem;
+      padding: 0 0.5rem;
+    }
+    
+    .back-btn {
+      padding: 0.5rem;
+      
+      svg {
+        font-size: 0.8rem;
+      }
+    }
+    
+    .nav-links {
+      gap: 0.1rem;
+      
+      li {
+        a {
+          padding: 0.5rem 0.5rem;
+          
+          svg {
+            font-size: 0.85rem;
+          }
+        }
+      }
+      
+      .theme-item {
+        .theme-btn {
+          padding: 0.5rem;
+          
+          svg {
+            font-size: 0.8rem;
           }
         }
       }
