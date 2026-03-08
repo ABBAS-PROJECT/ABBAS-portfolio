@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
+import { initGA, logPageView } from './analytics';
 import './App.scss';
 
 // Components (loaded immediately - needed for every page)
@@ -36,6 +38,9 @@ function AnimatedRoutes({ setIsTransitioning }) {
   const [prevPath, setPrevPath] = useState('');
   
   useEffect(() => {
+    // Track page view with Google Analytics
+    logPageView(location.pathname);
+    
     if (prevPath && prevPath !== location.pathname) {
       setIsTransitioning(true);
       const timer = setTimeout(() => setIsTransitioning(false), 1200);
@@ -78,6 +83,11 @@ function App() {
       }
       return prev;
     });
+  }, []);
+
+  // Initialize Google Analytics
+  useEffect(() => {
+    initGA();
   }, []);
 
   // Initialize theme and achievements
@@ -150,6 +160,9 @@ function App() {
         <div className="app-content">
           <AnimatedRoutes setIsTransitioning={setIsTransitioning} />
         </div>
+        
+        {/* VERCEL ANALYTICS */}
+        <Analytics />
       </div>
     </Router>
   );
