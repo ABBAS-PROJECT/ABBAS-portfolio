@@ -1,37 +1,59 @@
-# 🎮 Mohammed Abbas - Software Engineer Portfolio
+<div align="center">
 
-Interactive portfolio showcasing full-stack development, mobile apps, and game development with a unique gaming-inspired design.
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=32&duration=2800&pause=1000&color=00E5FF&center=true&vCenter=true&width=600&lines=Mohammed+Abbas;Software+Engineer;Full+Stack+Developer;Game+Developer;React+%7C+Django+%7C+.NET+MAUI" alt="Typing SVG" />
 
-**🌐 [View Live Demo](https://abbas-portfolio-zeta.vercel.app/)**
+<h3>🎮 Interactive Portfolio with Gaming-Inspired Design</h3>
+
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00e5ff?style=for-the-badge)](https://abbas-portfolio-zeta.vercel.app/)
+
+[![Profile Views](https://komarev.com/ghpvc/?username=ABBAS-PROJECT&color=00e5ff&style=for-the-badge&label=Profile+Views)](https://github.com/ABBAS-PROJECT)
 
 ![Portfolio Preview](https://raw.githubusercontent.com/ABBAS-PROJECT/ABBAS-portfolio/refs/heads/main/home%20page.png)
+
+</div>
 
 ---
 
 ## ✨ What Makes This Portfolio Unique
 
-Unlike standard portfolios, this one features:
+<table>
+<tr>
+<td width="50%">
 
-- 🎨 **3 Theme Modes** - Light, Dark (Purple), Retro (80s Terminal)
-- 🎮 **Pac-Man Page Transitions** - Classic arcade animation between pages
-- 🏆 **Achievement System** - 8 unlockable achievements for visitors
-- 🤖 **MixBot AI Guide** - Interactive assistant on every page
-- 🐍 **Hidden Easter Eggs** - Snake animation, 404 runner game, developer console
-- ⌨️ **Terminal Interface** - Press `~` for developer console
-- 📱 **Fully Responsive** - Optimized for mobile and desktop
+### 🎨 Visual Features
+- **3 Theme Modes** - Light, Dark, Retro
+- **Pac-Man Transitions** - Arcade animations
+- **Fully Responsive** - Mobile optimized
+- **Smooth Animations** - Framer Motion
+
+</td>
+<td width="50%">
+
+### 🎮 Interactive Elements
+- **Achievement System** - 8 unlockable badges
+- **MixBot AI Guide** - Smart assistant
+- **Easter Eggs** - Hidden surprises
+- **Developer Console** - Terminal interface
+
+</td>
+</tr>
+</table>
+
+---
 
 ## 🛠️ Built With
+
+<div align="center">
 
 ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![React Router](https://img.shields.io/badge/React_Router-6.20.0-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![SASS](https://img.shields.io/badge/Sass-1.69.5-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer-10.16.16-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![Framer](https://img.shields.io/badge/Framer_Motion-10.16.16-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-- **React 18.2.0** - UI library
-- **React Router 6.20.0** - Client-side routing
-- **Framer Motion** - Smooth animations
-- **SASS** - Advanced styling
-- **Vercel** - Deployment platform
+</div>
+
+---
 
 ## 🚀 Quick Start
 ```bash
@@ -48,44 +70,91 @@ npm install
 npm start
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) in your browser.
+<div align="center">
 
-## 🎮 Try These Easter Eggs
+🌐 Open [http://localhost:3000](http://localhost:3000) in your browser
+
+</div>
+
+---
+
+## 🎮 Easter Eggs & Hidden Features
 
 <details>
-<summary>👀 Click to reveal hidden features</summary>
+<summary>👀 Click to reveal secrets</summary>
 
-- 🎮 **Pac-Man Transitions** - Watch animations between pages
-- 🐍 **Snake Appearance** - Wait 30 seconds on any page
-- 👾 **Retro Mode** - Switch theme for 80s terminal aesthetics
-- ⌨️ **Developer Console** - Press `~` key
-- 🏆 **8 Achievements** - Complete challenges by exploring
-  - Explorer (visit all 7 pages)
-  - Speed Runner (under 60 seconds)
-  - Night Owl (visit 8pm-6am)
-  - And 5 more...
-- 🕹️ **404 Game** - Visit a broken link to play
+<br>
+
+| Feature | How to Unlock | Description |
+|---------|---------------|-------------|
+| 🎮 **Pac-Man** | Navigate pages | Classic arcade transitions |
+| 🐍 **Snake** | Wait 30 seconds | Nokia-style snake appears |
+| 👾 **Retro Mode** | Theme switcher | 80s terminal aesthetics |
+| ⌨️ **Dev Console** | Press `~` key | Functional terminal |
+| 🏆 **Explorer** | Visit all 7 pages | Achievement unlocked |
+| ⚡ **Speed Runner** | Complete in <60s | Fast navigation badge |
+| 🦉 **Night Owl** | Visit 8pm-6am | Time-based achievement |
+| 🕹️ **404 Game** | Break a URL | Play runner game |
 
 </details>
+
+---
 
 ## 📂 Project Structure
 ```
 ABBAS-portfolio/
-├── src/
-│   ├── components/      # Reusable components
-│   ├── pages/          # Page components
-│   ├── styles/         # Global styles & themes
-│   └── App.jsx         # Main app component
-├── public/             # Static assets
-└── package.json        # Dependencies
+├── 📁 src/
+│   ├── 🧩 components/      # Achievements, MixBot, PacMan, Snake
+│   ├── 📄 pages/          # Home, About, Skills, Projects, etc.
+│   ├── 🎨 styles/         # Global styles & theme configs
+│   ├── 📊 analytics.js    # Google Analytics setup
+│   └── ⚛️ App.jsx         # Main application component
+├── 📁 public/             # Favicon, index.html
+└── 📦 package.json        # Dependencies & scripts
 ```
-
-## 📝 License
-
-Licensed under the [MIT License](LICENSE).
 
 ---
 
-**[Portfolio](https://abbas-portfolio-zeta.vercel.app/) • [LinkedIn](https://www.linkedin.com/in/mohmmad-abbas/) • [GitHub](https://github.com/ABBAS-PROJECT)**
+## 📊 Repository Stats
 
-⭐ Star this repo if you like the gaming-inspired design!
+<div align="center">
+
+![GitHub Stars](https://img.shields.io/github/stars/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=yellow)
+![GitHub Forks](https://img.shields.io/github/forks/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=blue)
+![GitHub Issues](https://img.shields.io/github/issues/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=red)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=green)
+
+</div>
+
+---
+
+## 🔗 Connect With Me
+
+<div align="center">
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-00e5ff?style=for-the-badge&logo=google-chrome&logoColor=white)](https://abbas-portfolio-zeta.vercel.app/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohmmad-abbas/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ABBAS-PROJECT)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mkabbas2014@gmail.com)
+
+</div>
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for full details.
+
+---
+
+<div align="center">
+
+<br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&text=Thanks%20for%20Visiting!&fontSize=16&fontColor=fff&animation=twinkling&fontAlignY=72" />
+
+⭐ **Star this repo if you like the gaming-inspired design!** ⭐
+
+<sub>Made with ❤️ and ☕ by Mohammed Abbas</sub>
+
+</div>
