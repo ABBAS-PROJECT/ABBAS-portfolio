@@ -6,9 +6,7 @@
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00e5ff?style=for-the-badge)](https://abbas-portfolio-zeta.vercel.app/)
 
-[![Profile Views](https://komarev.com/ghpvc/?username=ABBAS-PROJECT&color=00e5ff&style=for-the-badge&label=Profile+Views)](https://github.com/ABBAS-PROJECT)
-
-![Portfolio Preview](https://raw.githubusercontent.com/ABBAS-PROJECT/ABBAS-portfolio/refs/heads/main/home%20page.png)
+<img width="959" height="476" alt="home page" src="https://github.com/user-attachments/assets/f092d979-6172-4032-beba-77104bd0da65" />
 
 </div>
 
@@ -112,34 +110,6 @@ ABBAS-portfolio/
 ├── 📁 public/             # Favicon, index.html
 └── 📦 package.json        # Dependencies & scripts
 ```
-
----
-
-## 📊 Repository Stats
-
-<div align="center">
-
-![GitHub Stars](https://img.shields.io/github/stars/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=yellow)
-![GitHub Forks](https://img.shields.io/github/forks/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=blue)
-![GitHub Issues](https://img.shields.io/github/issues/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=red)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/ABBAS-PROJECT/ABBAS-portfolio?style=for-the-badge&color=green)
-
-</div>
-
----
-
-## 🔗 Connect With Me
-
-<div align="center">
-
-[![Portfolio](https://img.shields.io/badge/Portfolio-00e5ff?style=for-the-badge&logo=google-chrome&logoColor=white)](https://abbas-portfolio-zeta.vercel.app/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohmmad-abbas/)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ABBAS-PROJECT)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mkabbas2014@gmail.com)
-
-</div>
-
----
 
 ## 📝 License
 
