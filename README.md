@@ -1,129 +1,91 @@
-# Mohammed Abbas - Software Engineer Portfolio
+# 🎮 Mohammed Abbas - Software Engineer Portfolio
 
-Welcome to my portfolio! This interactive web application showcases my software engineering projects, skills, and experience with a unique gaming-inspired design. Check it out live [here!](https://your-portfolio.netlify.app)
+Interactive portfolio showcasing full-stack development, mobile apps, and game development with a unique gaming-inspired design.
 
-![Portfolio Screenshot](screenshot.png)
-<!-- Add screenshot after deployment -->
+**🌐 [View Live Demo](https://abbas-portfolio-zeta.vercel.app/)**
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Easter Eggs](#easter-eggs)
-- [License](#license)
-
-## Introduction
-
-This portfolio is a personalized space highlighting my expertise in full-stack development, mobile apps, and game development. The application offers an interactive experience with gaming elements, making it memorable for recruiters and fellow developers.
-
-Built with modern web technologies and designed with a 90% professional, 10% gaming aesthetic.
-
-## Features
-
-- **Responsive Design:** Optimized for all devices and screen sizes
-- **Three Theme Modes:** Light, Dark (Purple), and Retro (Cyan) themes with smooth transitions
-- **Interactive Elements:** 
-  - 🎮 Pac-Man page transitions
-  - 🐍 Snake easter egg animation
-  - 🎯 404 runner game
-  - 🤖 MixBot AI guide
-- **Achievement System:** Track visitor exploration with 8 unlockable achievements
-- **Developer Console:** Terminal-style interface (press `~` key)
-- **Project Showcase:** Detailed project pages with live demos and source code links
-- **Contact Integration:** Easy-to-use contact methods with clipboard copy functionality
-
-## Installation
-
-To run this portfolio locally, follow these steps:
-
-To run this portfolio locally, follow these steps:
-
-1. Clone the repository:
-```bash
-   git clone https://github.com/ABBAS-PROJECT/ABBAS-portfolio.git
-```
-
-2. Navigate to the project directory:
-```bash
-   cd ABBAS-portfolio
-```
-
-3. Install dependencies:
-```bash
-   npm install
-```
-
-4. Start the development server:
-```bash
-   npm start
-```
-
-5. Open your browser and visit [http://localhost:3000](http://localhost:3000)
-
-## Technologies Used
-
-- **React 18.2.0** - JavaScript library for building user interfaces
-- **React Router 6.20.0** - Client-side routing
-- **Framer Motion 10.16.16** - Animation library
-- **SASS 1.69.5** - CSS preprocessor for enhanced styling
-- **React Icons 4.12.0** - Icon library
-
-## Project Structure
-
-The project follows a standard React application layout:
-```
-mohammed-portfolio/
-├── public/
-│   ├── _redirects          # Netlify routing configuration
-│   ├── favicon.ico         # Site favicon
-│   └── index.html          # HTML template
-├── src/
-│   ├── components/
-│   │   ├── Achievements/   # Achievement tracker system
-│   │   ├── DeveloperConsole/ # Terminal interface
-│   │   ├── MixBot/         # AI guide assistant
-│   │   ├── Navbar/         # Navigation bar
-│   │   ├── PacManTransition/ # Page transitions
-│   │   ├── Snake/          # Easter egg animation
-│   │   └── ThemeSwitcher/  # Theme toggle
-│   ├── pages/
-│   │   ├── Home/           # Landing page
-│   │   ├── About/          # About me
-│   │   ├── Skills/         # Technical skills
-│   │   ├── Experience/     # Work history
-│   │   ├── Projects/       # Project showcase
-│   │   ├── Education/      # Academic background
-│   │   ├── Contact/        # Contact information
-│   │   └── NotFound/       # 404 game page
-│   ├── styles/
-│   │   └── global.scss     # Global styles and themes
-│   ├── App.jsx             # Main application component
-│   ├── App.scss            # App-specific styles
-│   └── index.js            # Application entry point
-└── package.json            # Project dependencies
-```
-
-## Easter Eggs
-
-Try these hidden features in the portfolio:
-
-- 🎮 **Pac-Man Transitions** - Watch the classic arcade animation between pages
-- 🐍 **Snake Animation** - Wait 30 seconds on any page
-- 👾 **Retro Theme** - Switch to retro mode for 8-bit aesthetics
-- ⌨️ **Developer Console** - Press `~` key to access terminal
-- 🏆 **Achievements** - Explore all pages to unlock 8 achievements
-- 🕹️ **404 Game** - Visit a non-existent page to play the runner game
-- 🤖 **MixBot** - Click the assistant for contextual help on each page
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-**Copyright © 2025 Mohammed Abbas**
+![Portfolio Preview](https://raw.githubusercontent.com/ABBAS-PROJECT/ABBAS-portfolio/refs/heads/main/home%20page.png)
 
 ---
 
-Thank you for checking out my portfolio! If you have any questions, feedback, or opportunities, feel free to reach out. ⭐
+## ✨ What Makes This Portfolio Unique
+
+Unlike standard portfolios, this one features:
+
+- 🎨 **3 Theme Modes** - Light, Dark (Purple), Retro (80s Terminal)
+- 🎮 **Pac-Man Page Transitions** - Classic arcade animation between pages
+- 🏆 **Achievement System** - 8 unlockable achievements for visitors
+- 🤖 **MixBot AI Guide** - Interactive assistant on every page
+- 🐍 **Hidden Easter Eggs** - Snake animation, 404 runner game, developer console
+- ⌨️ **Terminal Interface** - Press `~` for developer console
+- 📱 **Fully Responsive** - Optimized for mobile and desktop
+
+## 🛠️ Built With
+
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![React Router](https://img.shields.io/badge/React_Router-6.20.0-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![SASS](https://img.shields.io/badge/Sass-1.69.5-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer-10.16.16-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+
+- **React 18.2.0** - UI library
+- **React Router 6.20.0** - Client-side routing
+- **Framer Motion** - Smooth animations
+- **SASS** - Advanced styling
+- **Vercel** - Deployment platform
+
+## 🚀 Quick Start
+```bash
+# Clone repository
+git clone https://github.com/ABBAS-PROJECT/ABBAS-portfolio.git
+
+# Navigate to directory
+cd ABBAS-portfolio
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🎮 Try These Easter Eggs
+
+<details>
+<summary>👀 Click to reveal hidden features</summary>
+
+- 🎮 **Pac-Man Transitions** - Watch animations between pages
+- 🐍 **Snake Appearance** - Wait 30 seconds on any page
+- 👾 **Retro Mode** - Switch theme for 80s terminal aesthetics
+- ⌨️ **Developer Console** - Press `~` key
+- 🏆 **8 Achievements** - Complete challenges by exploring
+  - Explorer (visit all 7 pages)
+  - Speed Runner (under 60 seconds)
+  - Night Owl (visit 8pm-6am)
+  - And 5 more...
+- 🕹️ **404 Game** - Visit a broken link to play
+
+</details>
+
+## 📂 Project Structure
+```
+ABBAS-portfolio/
+├── src/
+│   ├── components/      # Reusable components
+│   ├── pages/          # Page components
+│   ├── styles/         # Global styles & themes
+│   └── App.jsx         # Main app component
+├── public/             # Static assets
+└── package.json        # Dependencies
+```
+
+## 📝 License
+
+Licensed under the [MIT License](LICENSE).
+
+---
+
+**[Portfolio](https://abbas-portfolio-zeta.vercel.app/) • [LinkedIn](https://www.linkedin.com/in/mohmmad-abbas/) • [GitHub](https://github.com/ABBAS-PROJECT)**
+
+⭐ Star this repo if you like the gaming-inspired design!
